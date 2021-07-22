@@ -16,3 +16,13 @@ spring:
     database-platform: org.hibernate.dialect.DerbyTenSevenDialect
     hibernate:
       ddl-auto: update
+#    properties:
+#      javax:
+#        persisitence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: docs/sql/ddl.sql
+#      hibernate:
+#        format_sql: true
