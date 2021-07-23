@@ -72,6 +72,14 @@ public class User {
   )
   @OrderBy("created DESC")
   private final List<Match> matchesParticipating = new LinkedList<>();
+
+  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+  @OrderBy("created DESC")
+  @NonNull
+  private final List<Code> codes = new LinkedList<>();
+
+// TODO Consider wheter or not adding the one-to-many for guesses make sense here...
+
   @NonNull
   public UUID getId() {
     return id;
@@ -116,4 +124,10 @@ public class User {
   public List<Match> getMatchesParticipating() {
     return matchesParticipating;
   }
+
+  @NonNull
+  public List<Code> getCodes() {
+    return codes;
+  }
+
 }

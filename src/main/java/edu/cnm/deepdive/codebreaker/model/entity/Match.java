@@ -15,6 +15,7 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -80,6 +81,11 @@ public class Match {
   @OrderBy("displayName ASC")
   private final List<User> participants = new LinkedList<>();
 
+  @OneToMany(mappedBy = "match", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+  @OrderBy("created ASC")
+  @NonNull
+  private final List<Code> codes = new LinkedList<>();
+
   @NonNull
   public UUID getId() {
     return id;
@@ -142,8 +148,14 @@ public class Match {
     this.originator = originator;
   }
 
+  @NonNull
   public List<User> getParticipants() {
     return participants;
+  }
+
+  @NonNull
+  public List<Code> getCodes() {
+    return codes;
   }
 
   public enum Criterion {
