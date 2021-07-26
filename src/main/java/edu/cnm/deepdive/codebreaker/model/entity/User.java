@@ -106,8 +106,8 @@ public class User {
   }
 
   @NonNull
-  public String getDisplayName() {
-    return displayName;
+  public String getDisplayName(String displayName) {
+    return this.displayName;
   }
 
   public void setDisplayName(@NonNull String displayName) {
