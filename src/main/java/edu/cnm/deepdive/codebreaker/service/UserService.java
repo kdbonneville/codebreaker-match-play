@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.codebreaker;
+package edu.cnm.deepdive.codebreaker.service;
 
 import edu.cnm.deepdive.codebreaker.model.dao.UserRepository;
 import edu.cnm.deepdive.codebreaker.model.entity.User;
@@ -20,13 +20,12 @@ public class UserService implements Converter<Jwt, UsernamePasswordAuthenticatio
   private final UserRepository repository;
 
   @Autowired
-   public UserService(UserRepository repository) {
+  public UserService(UserRepository repository) {
     this.repository = repository;
   }
 
   public Optional<User> get(UUID id) {
     return repository.findById(id);
-
   }
 
   public User save(User user) {
@@ -39,7 +38,7 @@ public class UserService implements Converter<Jwt, UsernamePasswordAuthenticatio
             repository
                 .findByOauthKey(oauthKey)
                 .map((user) -> {
-                  // TODO Check if user is inactive.
+                  // TODO Check is user is inactive.
                   user.setConnected(new Date());
                   return user;
                 })

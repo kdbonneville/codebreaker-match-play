@@ -7,7 +7,6 @@ import java.util.UUID;
 import java.util.stream.Stream;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
 public interface GuessRepository extends JpaRepository<Guess, UUID> {
 
   Stream<Guess> findAllByUserAndCodeOrderByCreatedAsc(User user, Code code);

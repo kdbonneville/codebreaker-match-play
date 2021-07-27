@@ -21,5 +21,4 @@ public interface CodeRepository extends JpaRepository<Code, UUID> {
       + ") ORDER BY c.created ASC")
   Stream<Code> findAllByUserAndNotSolvedOrderByCreatedAsc(User user);
 
-
 }

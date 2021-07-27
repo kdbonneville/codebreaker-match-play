@@ -1,11 +1,11 @@
 package edu.cnm.deepdive.codebreaker.model.dao;
 
 import edu.cnm.deepdive.codebreaker.model.entity.Match;
+import edu.cnm.deepdive.codebreaker.model.entity.User;
 import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Stream;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.User;
 
 public interface MatchRepository extends JpaRepository<Match, UUID> {
 
@@ -28,8 +28,9 @@ public interface MatchRepository extends JpaRepository<Match, UUID> {
       User participant, Date cutoff);
 
   Stream<Match>
-      findAllByParticipantsNotContainsAndEndingAfterAndCodeLengthAndPoolSizeOrderByEndingAsc(
-          User participant, Date cutoff, int codeLength, int poolSize);
+  findAllByParticipantsNotContainsAndEndingAfterAndCodeLengthAndPoolSizeOrderByEndingAsc(
+      User participant, Date cutoff, int codeLength, int poolSize);
 
+  // etc.
 
 }

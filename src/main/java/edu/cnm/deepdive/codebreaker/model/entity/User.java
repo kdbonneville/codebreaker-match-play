@@ -61,10 +61,8 @@ public class User {
   @NonNull
   private Date connected;
 
-
   @OneToMany(mappedBy = "originator", fetch = FetchType.LAZY,
       cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-
   @OrderBy("created DESC")
   @NonNull
   private final List<Match> matchesOriginated = new LinkedList<>();
@@ -77,14 +75,13 @@ public class User {
       inverseJoinColumns = {@JoinColumn(name = "match_id", nullable = false, updatable = false)}
   )
   @OrderBy("created DESC")
+  @NonNull
   private final List<Match> matchesParticipating = new LinkedList<>();
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
   @OrderBy("created DESC")
   @NonNull
   private final List<Code> codes = new LinkedList<>();
-
-// TODO Consider wheter or not adding the one-to-many for guesses make sense here...
 
   @NonNull
   public UUID getId() {
@@ -106,8 +103,8 @@ public class User {
   }
 
   @NonNull
-  public String getDisplayName(String displayName) {
-    return this.displayName;
+  public String getDisplayName() {
+    return displayName;
   }
 
   public void setDisplayName(@NonNull String displayName) {
@@ -136,6 +133,7 @@ public class User {
     return matchesOriginated;
   }
 
+  @NonNull
   public List<Match> getMatchesParticipating() {
     return matchesParticipating;
   }

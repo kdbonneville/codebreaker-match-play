@@ -168,7 +168,7 @@ public class Match {
   }
 
   @PrePersist
-  private void updatePoolLength() {
+  private void updatePoolSize() {
     poolSize = (int) pool
         .codePoints()
         .count();
