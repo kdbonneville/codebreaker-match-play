@@ -3,6 +3,7 @@ package edu.cnm.deepdive.codebreaker.controller;
 import edu.cnm.deepdive.codebreaker.UserService;
 import edu.cnm.deepdive.codebreaker.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
